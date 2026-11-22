@@ -45,7 +45,7 @@ const magic = 'LIPRES01';
 let payloadPromise;
 
 function loadPayload() {
-  return fetch('./presentation.bin', { cache: 'force-cache' }).then(async response => {
+  return fetch('./presentation.bin', { cache: 'no-cache' }).then(async response => {
     if (!response.ok) throw new Error('payload');
     const bytes = new Uint8Array(await response.arrayBuffer());
     if (bytes.length < 52 || new TextDecoder().decode(bytes.subarray(0, 8)) !== magic) {
